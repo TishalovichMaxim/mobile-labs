@@ -13,13 +13,17 @@ fun Navigation() {
     val navController = rememberNavController()
     Router.instance.navController = navController
 
-    NavHost(navController = navController, startDestination = Screen.SignUp.name) {
+    NavHost(navController = navController, startDestination = Screen.SignIn.name) {
         composable(route = Screen.SignUp.name) {
             SignUpScreen()
         }
         composable(route = Screen.SignIn.name) {
             SignInScreen()
         }
+        composable(route = Screen.Castle.name) {
+            CastleScreen()
+        }
+
     }
 
 }
