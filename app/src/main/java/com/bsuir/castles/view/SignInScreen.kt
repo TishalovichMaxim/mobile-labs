@@ -22,6 +22,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bsuir.castles.viewmodel.SignInViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Composable
 fun SignInScreen() {
@@ -51,6 +54,11 @@ fun SignInScreen() {
             maxLines = 1
         )
 
+        Spacer(
+            modifier = Modifier
+                .padding(top = 5.dp)
+        )
+
         TextField (
             value = viewModel.password,
             onValueChange = { viewModel.password = it },
@@ -63,12 +71,15 @@ fun SignInScreen() {
         Text (
             text = "Have no account?",
             modifier = Modifier.clickable {
+                viewModel.goToSignUpScreen()
             },
             textDecoration = TextDecoration.Underline
         )
 
         Button(onClick = {
-
+            CoroutineScope(Dispatchers.Main).launch {
+                viewModel.signIn()
+            }
         } ) {
             Text(text = "Sign in")
         }
