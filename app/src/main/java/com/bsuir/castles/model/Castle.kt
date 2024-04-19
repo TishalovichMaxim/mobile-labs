@@ -7,4 +7,6 @@ class Castle(
     var foundationYear: Int,
     var mainImage: String,
 ) {
+    constructor() : this("", "", "", 0, "") {
+    }
 }
