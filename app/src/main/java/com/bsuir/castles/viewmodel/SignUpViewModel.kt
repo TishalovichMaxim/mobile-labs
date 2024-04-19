@@ -33,7 +33,7 @@ class SignUpViewModel : ViewModel() {
 
     @SuppressLint("SimpleDateFormat")
     fun getDateString(): String {
-        val dateFormat = SimpleDateFormat("dd/mm/yyyy")
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy")
         date?.let {
             return dateFormat.format(it)
         }
