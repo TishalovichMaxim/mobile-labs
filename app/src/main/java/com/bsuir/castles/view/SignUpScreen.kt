@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
@@ -22,11 +21,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bsuir.castles.view.help.MyDatePickerDialog
 import com.bsuir.castles.viewmodel.SignUpViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Composable
 fun SignUpScreen() {
@@ -64,7 +67,6 @@ fun SignUpScreen() {
             maxLines = 1,
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            shape = RoundedCornerShape(20.dp),
         )
 
         Spacer(
@@ -99,11 +101,21 @@ fun SignUpScreen() {
             maxLines = 1,
         )
 
+        Spacer(
+            modifier = Modifier
+                .padding(top = 5.dp)
+        )
+
         TextField(
             value = viewModel.lastName,
             onValueChange = { viewModel.lastName = it },
             label = { Text(text = "Input your last name") },
             maxLines = 1
+        )
+
+        Spacer(
+            modifier = Modifier
+                .padding(top = 5.dp)
         )
 
         TextField(
@@ -123,7 +135,7 @@ fun SignUpScreen() {
 
             Box(contentAlignment = Alignment.Center) {
                 Button(onClick = { viewModel.showDatePicker = true }) {
-                    Text(text = viewModel.date?.toString() ?: "Choose..")
+                    Text(text = viewModel.getDateString())
                 }
             }
 
@@ -156,9 +168,17 @@ fun SignUpScreen() {
         )
 
         Button(onClick = {
-
+            CoroutineScope(Dispatchers.Main).launch {
+                viewModel.signUp()
+            }
         }) {
             Text(text = "Sign up")
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SignUpScreenPreview() {
+    SignUpScreen()
 }
