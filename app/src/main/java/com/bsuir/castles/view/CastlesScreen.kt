@@ -70,7 +70,6 @@ fun CastlesScreen() {
             CastlesList(viewModel.getAllCastles())
         }
     }
-
 }
 
 @Preview(showBackground = true)

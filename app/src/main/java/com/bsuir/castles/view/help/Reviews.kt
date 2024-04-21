@@ -29,7 +29,7 @@ internal fun ReviewItem(review: Review) {
             .padding(top = 5.dp)
     ) {
         Row(
-            horizontalArrangement = Arrangement.SpaceAround,
+            horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth(0.9f)
         ) {

@@ -1,6 +1,5 @@
 package com.bsuir.castles.view.help
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Button
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
@@ -10,12 +9,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import java.text.SimpleDateFormat
 import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -62,28 +58,4 @@ fun MyDatePickerDialog(
             state = datePickerState
         )
     }
-}
-
-@Composable
-fun MyDatePickerDialog() {
-    //var date by remember {
-    //    mutableStateOf("Choose..")
-    //}
-
-    //var showDatePicker by remember {
-    //    mutableStateOf(false)
-    //}
-
-    //Box(contentAlignment = Alignment.Center) {
-    //    Button(onClick = { showDatePicker = true }) {
-    //        Text(text = date)
-    //    }
-    //}
-
-    //if (showDatePicker) {
-    //    MyDatePickerDialog(
-    //        onDateSelected = { date = it },
-    //        onDismiss = { showDatePicker = false }
-    //    )
-    //}
 }
