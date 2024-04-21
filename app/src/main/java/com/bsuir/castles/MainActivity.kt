@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.bsuir.castles.ui.theme.CastlesTheme
 import com.bsuir.castles.view.Navigation
-import com.bsuir.castles.view.SignInScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
