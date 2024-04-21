@@ -23,7 +23,7 @@ class CastlesViewModel : ViewModel() {
         }
 
         return castles.filter {
-            it.name.startsWith(searchText)
+            it.name.startsWith(searchText, true)
         }
     }
 
