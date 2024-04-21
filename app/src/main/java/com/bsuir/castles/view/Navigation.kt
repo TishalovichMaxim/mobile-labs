@@ -8,12 +8,13 @@ import com.bsuir.castles.viewmodel.Router
 import com.bsuir.castles.viewmodel.Screen
 
 @Composable
-fun Navigation() {
-
+fun Navigation(
+) {
     val navController = rememberNavController()
     Router.instance.navController = navController
 
     NavHost(navController = navController, startDestination = Screen.SignIn.name) {
+
         composable(route = Screen.SignUp.name) {
             SignUpScreen()
         }
@@ -23,7 +24,14 @@ fun Navigation() {
         composable(route = Screen.Castle.name) {
             CastleScreen()
         }
-
+        composable(route = Screen.Profile.name) {
+            ProfileScreen()
+        }
+        composable(route = Screen.Castles.name) {
+            CastlesScreen()
+        }
+        composable(route = Screen.Favorites.name) {
+            FavoritesScreen()
+        }
     }
-
 }
