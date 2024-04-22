@@ -1,5 +1,6 @@
 package com.bsuir.castles.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -11,6 +12,7 @@ import com.bsuir.castles.viewmodel.help.Router
 import com.bsuir.castles.viewmodel.help.Screen
 import com.bsuir.castles.viewmodel.help.SharedData
 import com.google.firebase.Firebase
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.launch
@@ -42,7 +44,15 @@ class SignInViewModel : ViewModel() {
             return
         }
 
-        val authRes = Firebase.auth.signInWithEmailAndPassword(email, password).await()
+        val authRes: AuthResult
+
+        try {
+            authRes = Firebase.auth.signInWithEmailAndPassword(email, password).await()
+        } catch (e: Exception) {
+            Log.d("SIGN_IN", e.message ?: "")
+            return
+        }
+
         if (authRes.user == null) {
             return
         }
