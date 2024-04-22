@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bsuir.castles.model.User
 import com.bsuir.castles.viewmodel.help.FirestorePath
+import com.bsuir.castles.viewmodel.help.Router
+import com.bsuir.castles.viewmodel.help.Screen
+import com.bsuir.castles.viewmodel.help.SharedData
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore

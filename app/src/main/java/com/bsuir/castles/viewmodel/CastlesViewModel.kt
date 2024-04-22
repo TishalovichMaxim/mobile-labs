@@ -6,6 +6,9 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.bsuir.castles.model.Castle
 import com.bsuir.castles.viewmodel.help.FirestorePath
+import com.bsuir.castles.viewmodel.help.Router
+import com.bsuir.castles.viewmodel.help.Screen
+import com.bsuir.castles.viewmodel.help.SharedData
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.toObject

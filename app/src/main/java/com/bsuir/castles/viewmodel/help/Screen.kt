@@ -1,4 +1,4 @@
-package com.bsuir.castles.viewmodel
+package com.bsuir.castles.viewmodel.help
 
 enum class Screen {
     SignIn,

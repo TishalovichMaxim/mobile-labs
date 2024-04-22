@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.bsuir.castles.viewmodel.Router
-import com.bsuir.castles.viewmodel.Screen
+import com.bsuir.castles.viewmodel.help.Router
+import com.bsuir.castles.viewmodel.help.Screen
 
 @Composable
 fun Navigation(

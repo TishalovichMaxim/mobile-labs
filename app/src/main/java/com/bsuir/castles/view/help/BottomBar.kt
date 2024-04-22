@@ -12,8 +12,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.bsuir.castles.viewmodel.Router
-import com.bsuir.castles.viewmodel.Screen
+import com.bsuir.castles.viewmodel.help.Router
+import com.bsuir.castles.viewmodel.help.Screen
 
 @Composable
 fun BottomBar() {

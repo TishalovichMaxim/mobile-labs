@@ -30,7 +30,7 @@ import com.bsuir.castles.model.Castle
 import com.bsuir.castles.view.help.ReviewForm
 import com.bsuir.castles.view.help.Reviews
 import com.bsuir.castles.viewmodel.CastleViewModel
-import com.bsuir.castles.viewmodel.SharedData
+import com.bsuir.castles.viewmodel.help.SharedData
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
