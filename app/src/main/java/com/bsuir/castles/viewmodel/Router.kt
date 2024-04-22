@@ -12,6 +12,9 @@ class Router {
 
     fun route(screen: Screen) {
         navController?.navigate(screen.name) {
+            if (screen != Screen.Castle) {
+                navController!!.popBackStack()
+            }
         }
     }
 
