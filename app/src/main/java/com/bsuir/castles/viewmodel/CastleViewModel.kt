@@ -12,6 +12,7 @@ import androidx.lifecycle.viewModelScope
 import com.bsuir.castles.model.Castle
 import com.bsuir.castles.model.Review
 import com.bsuir.castles.viewmodel.help.FirestorePath
+import com.bsuir.castles.viewmodel.help.SharedData
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
