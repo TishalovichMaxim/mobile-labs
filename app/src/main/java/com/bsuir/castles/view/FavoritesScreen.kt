@@ -38,7 +38,7 @@ fun FavoritesScreen() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.9f)
+                .fillMaxHeight()
                 .verticalScroll(rememberScrollState())
                 .padding(it),
             horizontalAlignment = Alignment.CenterHorizontally,
