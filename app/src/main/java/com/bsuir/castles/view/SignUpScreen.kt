@@ -27,9 +27,6 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bsuir.castles.view.help.MyDatePickerDialog
 import com.bsuir.castles.viewmodel.SignUpViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @Composable
 fun SignUpScreen() {
@@ -168,9 +165,7 @@ fun SignUpScreen() {
         )
 
         Button(onClick = {
-            CoroutineScope(Dispatchers.Main).launch {
-                viewModel.signUp()
-            }
+            viewModel.signUp()
         }) {
             Text(text = "Sign up")
         }

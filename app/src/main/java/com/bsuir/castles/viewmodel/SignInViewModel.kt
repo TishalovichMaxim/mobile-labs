@@ -4,11 +4,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bsuir.castles.model.User
 import com.bsuir.castles.viewmodel.help.FirestorePath
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class SignInViewModel : ViewModel() {
@@ -25,7 +27,13 @@ class SignInViewModel : ViewModel() {
         Router.instance.route(Screen.SignUp)
     }
 
-    suspend fun signIn() {
+    fun signIn() {
+        viewModelScope.launch {
+            signInSusp()
+        }
+    }
+
+    private suspend fun signInSusp() {
         if (!validateCredentials()) {
             //add here some logic
             return
@@ -45,7 +53,6 @@ class SignInViewModel : ViewModel() {
             .await()
 
         if (!fetchingRes.exists()) {
-            //add here some logic
             return
         }
 

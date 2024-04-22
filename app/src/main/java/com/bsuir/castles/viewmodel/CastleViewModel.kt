@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bsuir.castles.model.Castle
 import com.bsuir.castles.model.Review
 import com.bsuir.castles.viewmodel.help.FirestorePath
@@ -15,6 +16,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.toObject
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class CastleViewModel : ViewModel() {
@@ -52,6 +54,19 @@ class CastleViewModel : ViewModel() {
         return SharedData.castle!!
     }
 
+    fun loadCastleInfo() {
+        viewModelScope.launch {
+            loadCastleInfoSusp()
+        }
+    }
+
+    private suspend fun loadCastleInfoSusp() {
+        loadIsReviewPresent()
+        loadIsInFavorites()
+        loadImages()
+        loadReviews()
+    }
+
     private suspend fun loadIsInFavorites() {
         val res = Firebase.firestore
             .collection(FirestorePath.USERS.path)
@@ -62,13 +77,6 @@ class CastleViewModel : ViewModel() {
             .await()
 
         isInFavorites = res.exists()
-    }
-
-    suspend fun loadCastleInfo() {
-        loadIsReviewPresent()
-        loadIsInFavorites()
-        loadImages()
-        loadReviews()
     }
 
     private suspend fun addToFavorites() {
@@ -107,7 +115,13 @@ class CastleViewModel : ViewModel() {
         isReviewPresent = res.exists()
     }
 
-    suspend fun onLikeButtonClick() {
+    fun onLikeButtonClick() {
+        viewModelScope.launch {
+            onLikeButtonClickSusp()
+        }
+    }
+
+    private suspend fun onLikeButtonClickSusp() {
         if (isInFavorites) {
             removeFromFavorites()
         } else {
@@ -153,7 +167,13 @@ class CastleViewModel : ViewModel() {
         this.reviews = reviews
     }
 
-    suspend fun addReview() {
+    fun addReview() {
+        viewModelScope.launch {
+            addReviewSusp()
+        }
+    }
+
+    private suspend fun addReviewSusp() {
         val user = SharedData.user!!
         val userName = user.firstName + " " + user.secondName
 

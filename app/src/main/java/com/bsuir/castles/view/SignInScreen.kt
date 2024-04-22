@@ -22,9 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bsuir.castles.viewmodel.SignInViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @Composable
 fun SignInScreen() {
@@ -77,9 +74,7 @@ fun SignInScreen() {
         )
 
         Button(onClick = {
-            CoroutineScope(Dispatchers.Main).launch {
-                viewModel.signIn()
-            }
+            viewModel.signIn()
         } ) {
             Text(text = "Sign in")
         }

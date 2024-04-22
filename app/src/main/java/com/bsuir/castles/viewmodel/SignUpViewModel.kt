@@ -5,10 +5,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bsuir.castles.viewmodel.help.FirestorePath
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -41,7 +43,13 @@ class SignUpViewModel : ViewModel() {
         return "Choose.."
     }
 
-    suspend fun signUp() {
+    fun signUp() {
+        viewModelScope.launch {
+            signUpSusp()
+        }
+    }
+
+    private suspend fun signUpSusp() {
         val res = Firebase.auth
             .createUserWithEmailAndPassword(email, password)
             .await()

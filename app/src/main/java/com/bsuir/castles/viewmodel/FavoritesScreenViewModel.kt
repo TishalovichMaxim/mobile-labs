@@ -4,6 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bsuir.castles.model.Castle
 import com.bsuir.castles.viewmodel.help.FirestorePath
 import com.google.firebase.Firebase
@@ -11,6 +12,7 @@ import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.toObject
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class FavoritesScreenViewModel : ViewModel() {
@@ -28,7 +30,13 @@ class FavoritesScreenViewModel : ViewModel() {
         }
     }
 
-    suspend fun loadFavorites() {
+    fun loadFavorites() {
+        viewModelScope.launch {
+            loadFavoritesSusp()
+        }
+    }
+
+    private suspend fun loadFavoritesSusp() {
         val castles = mutableListOf<Castle>()
         val castlesIds = mutableListOf<String>()
 
