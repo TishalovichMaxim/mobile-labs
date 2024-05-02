@@ -7,16 +7,11 @@ class SignInScreen extends StatefulWidget {
   State<SignInScreen> createState() => _SignInScreenState();
 }
 
-void signIn() {
-  print("Sign in!");
-}
-
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController myController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(20.0),
@@ -39,8 +34,20 @@ class _SignInScreenState extends State<SignInScreen> {
                   hintText: "Password..."
                 ),
               ),
+              InkWell(
+                child: 
+                  Text(
+                    "Have no account?",
+                    style: TextStyle(decoration: TextDecoration.underline),
+                  ),
+                onTap: () {
+                  Navigator.pushNamed(context, "/sign_up");
+                },
+              ),
               ElevatedButton(
-                onPressed: signIn,
+                onPressed: () {
+                  Navigator.pushNamed(context, "/castles");
+                },
                 child: Text("Go")
               )
             ],
